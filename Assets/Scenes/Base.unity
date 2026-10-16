@@ -4354,6 +4354,8 @@ MonoBehaviour:
   mass: 1
   restitution: 0.8
   initialVelocity: {x: 0, y: 0, z: 0}
+  speed: 0
+  angle: 0
   waitForRelease: 1
   x: {x: 0, y: 0, z: 0}
   v: {x: 0, y: 0, z: 0}

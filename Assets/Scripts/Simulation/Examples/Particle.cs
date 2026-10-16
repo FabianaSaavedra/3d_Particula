@@ -22,6 +22,12 @@ public class Particle : MonoBehaviour
 
     [Tooltip("Velocidad inicial v0 (m/s). Con componente horizontal = tiro parabólico.")]
     public Vector3 initialVelocity = Vector3.zero;
+    [Tooltip("Opcional: rapidez |v0| (m/s). Si es > 0, se usa con el ángulo en vez de initialVelocity.")]
+    public float speed = 0f;
+    [Tooltip("Ángulo de lanzamiento θ en grados, medido desde el eje X.")]
+    public float angle = 0f;
+
+
 
     [Tooltip("Si está activo, la partícula espera quieta hasta que alguien llame Release().")]
     public bool waitForRelease = false;
@@ -77,6 +83,7 @@ public class Particle : MonoBehaviour
     {
         x = x0;
         v = initialVelocity;
+        if (speed > 0f) v = new Vector3(speed * Mathf.Cos(angle * Mathf.Deg2Rad), speed * Mathf.Sin(angle * Mathf.Deg2Rad), 0f);
         force = Vector3.zero;
         released = !waitForRelease;
         rb.position = x;
